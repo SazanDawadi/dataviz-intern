@@ -1,10 +1,10 @@
 {
     "form":{
-        "form_name":"Student Info",
+        "form_name":"Student Signup",
         "feilds":[
             {
                 "name":"name",
-                "label":"name",
+                "label":"Name",
                 "required":true,
                 "data_type":"Integer",
                 "html_element":"textbox"
