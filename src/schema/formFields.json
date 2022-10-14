@@ -1,0 +1,50 @@
+{
+    "form":{
+        "form_name":"Student Info",
+        "feilds":[
+            {
+                "name":"name",
+                "label":"name",
+                "required":true,
+                "data_type":"Integer",
+                "html_element":"textbox"
+
+            },
+            {
+                "name":"email",
+                "label":"Email",
+                "required":true,
+                "data_type":"String",
+                "html_element":"email"
+
+            },
+            {
+                "name":"phone",
+                "label":"Phone",
+                "required":true,
+                "data_type":"number",
+                "html_element":"textbox"
+
+            },
+            {
+                "name":"age",
+                "label":"Age",
+                "required":true,
+                "options":[],
+                "data_type":"number",
+                "html_element":"number"
+
+            },
+            {
+                "name":"photo",
+                "label":"Photo",
+                "required":true,
+                "options":[],
+                "data_type":"Image",
+                "html_element":"file"
+
+            }
+
+        ]
+    }
+}
