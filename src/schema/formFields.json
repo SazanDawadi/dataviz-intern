@@ -3,33 +3,44 @@
         "form_name":"Student Signup",
         "feilds":[
             {
+                "id":0,
                 "name":"name",
                 "label":"Name",
                 "required":true,
                 "validation_rule":{"validate":true,"rules":{"max":4}},
+                "error_msg":"Name can't be longer than four letters",
                 "data_type":"Integer",
                 "html_element":"textbox"
 
             },
             {
+                "id":1,
                 "name":"email",
                 "label":"Email",
                 "required":true,
+                "validation_rule":{"validate":true,"rules":{"max":100}},
+                "error_msg":"Invalid email format",
                 "data_type":"String",
                 "html_element":"email"
 
             },
             {
+                "id":2,
                 "name":"phone",
                 "label":"Phone",
+                "validation_rule":{"validate":true,"rules":{"max":10}},
+                "error_msg":"Number can't be longer than 10 digit",
                 "required":true,
                 "data_type":"number",
                 "html_element":"textbox"
 
             },
             {
+                "id":3,
                 "name":"age",
                 "label":"Age",
+                "validation_rule":{"validate":true,"rules":{"max":10}},
+                "error_msg":"Age can't be that long",
                 "required":true,
                 "options":[],
                 "data_type":"number",
@@ -37,8 +48,11 @@
 
             },
             {
+                "id":4,
                 "name":"photo",
                 "label":"Photo",
+                "validation_rule":{"validate":true,"rules":{"max":4}},
+                "error_msg":" ",
                 "required":true,
                 "options":[],
                 "data_type":"Image",

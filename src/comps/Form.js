@@ -1,23 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import formFeild from '../schema/formFields.json';
 import '../styles/form.css'
 
 const Form = () => {
     const [state, setState] = useState({});
-    // const[error, setError] = useState({});
-    // const [isValid,setIsValid] = useState({});
+    const[error, setError] = useState({});
+    
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(state);
+        const inputData = state
+        console.log(inputData)
       }
 
-    const handleChange = (event) => {
+    const handleChange = (event,validation_rule) => {
         const name = event.target.name;
         const value = event.target.value;
         setState({ ...state, [name]: value });
-        // if(formFeild.form.feilds[name])
-        // setState({ ...state, [name]: true });
+        setError({ ...error, [name]: false })
+        
+        if(validation_rule.validate){
+            
+            if(value.length > validation_rule.rules.max){
+                setError({ ...error, [name]: true })
+
+
+            }
+
+        }
       };
 
    
@@ -29,12 +39,13 @@ const Form = () => {
                 return(
                     <div className='input-container'>
                         <label>{inputData.label}</label>
-                        <input name = {inputData.name} type= {inputData.html_element} placeholder = {inputData.name} onChange={handleChange}  />
+                        <input name = {inputData.name} type= {inputData.html_element} placeholder = {inputData.name} onChange={(e) => {handleChange(e, inputData.validation_rule)}}  />
         
-                        {inputData.validation_rule?<label>{(String(state[inputData.name]).length > inputData.validation_rule.rules.max)?'errror':''}</label>:''}
+                        
+                        {inputData.validation_rule.validate && error[inputData.name]?<div><br/><label className='error'>{inputData.error_msg}</label></div>:''}
                         <br/>
-                        {}
-                        {/* {console.log(String(state[inputData.name]).length)} */}
+                        
+                        
                     </div>
 
                 )
