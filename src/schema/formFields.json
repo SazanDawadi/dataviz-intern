@@ -6,6 +6,7 @@
                 "name":"name",
                 "label":"Name",
                 "required":true,
+                "validation_rule":{"validate":true,"rules":{"max":4}},
                 "data_type":"Integer",
                 "html_element":"textbox"
 
