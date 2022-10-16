@@ -7,8 +7,8 @@
                 "name":"name",
                 "label":"Name",
                 "required":true,
-                "validation_rule":{"validate":true,"rules":{"max":4}},
-                "error_msg":"Name can't be longer than four letters",
+                "validation_rule":{"validate":true,"rules":{"min":4,"max":10}},
+                "error_msg":"Name should be 4 - 10 letters",
                 "data_type":"Integer",
                 "html_element":"textbox"
 
@@ -28,7 +28,7 @@
                 "id":2,
                 "name":"phone",
                 "label":"Phone",
-                "validation_rule":{"validate":true,"rules":{"max":10}},
+                "validation_rule":{"validate":true,"rules":{"max_length":10}},
                 "error_msg":"Number can't be longer than 10 digit",
                 "required":true,
                 "data_type":"number",
@@ -39,7 +39,7 @@
                 "id":3,
                 "name":"age",
                 "label":"Age",
-                "validation_rule":{"validate":true,"rules":{"max":10}},
+                "validation_rule":{"validate":true,"rules":{"max":100}},
                 "error_msg":"Age can't be that long",
                 "required":true,
                 "options":[],
@@ -49,10 +49,22 @@
             },
             {
                 "id":4,
+                "name":"enrolled_student",
+                "label":"Enrolled srudent",
+                "validation_rule":{"validate":true,"rules":{"should_be_checked":true}},
+                "error_msg":"This feild should be checked",
+                "required":true,
+                "options":[],
+                "data_type":"String",
+                "html_element":"checkbox"
+
+            },
+            {
+                "id":5,
                 "name":"photo",
                 "label":"Photo",
-                "validation_rule":{"validate":true,"rules":{"max":4}},
-                "error_msg":" ",
+                "validation_rule":{"validate":true,"rules":{"file_type":"image/png"}},
+                "error_msg":"Only png image supported!",
                 "required":true,
                 "options":[],
                 "data_type":"Image",

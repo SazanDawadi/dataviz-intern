@@ -5,6 +5,7 @@ import '../styles/form.css'
 const Form = () => {
     const [state, setState] = useState({});
     const[error, setError] = useState({});
+    const [selectedFile, setSelectedFile] = useState(null);
     
 
     const handleSubmit = (event) => {
@@ -20,6 +21,49 @@ const Form = () => {
         setError({ ...error, [name]: false })
         
         if(validation_rule.validate){
+
+            switch(event.target.type){
+                case 'text':
+                    if(value.length > validation_rule.rules.max  || value.length < validation_rule.rules.min ){
+                        setError({ ...error, [name]: true })
+        
+                    }
+                    break;
+
+                case 'checkbox':
+                    console.log(event.target.checked)
+                    
+                    if(!event.target.checked &&  validation_rule.rules.should_be_checked){
+                        setError({ ...error, [name]: true });
+                        setState({ ...state, [name]: true });
+
+                    }
+                    break;
+
+                case 'file':
+                    if(event.target.files[0].type === validation_rule.rules.file_type ){
+                        setSelectedFile(event.target.files[0]);
+                    }
+                    else{
+                        setError({ ...error, [name]: true });
+                    }
+                    
+                    console.log(selectedFile)
+                    break;
+
+                case 'number':
+                    if(value>  validation_rule.rules.max){
+                        setError({ ...error, [name]: true });
+
+                    }
+                    break;
+
+
+                default:
+                    break;
+
+            }
+            console.log(event.target.type)
             
             if(value.length > validation_rule.rules.max){
                 setError({ ...error, [name]: true })
@@ -43,6 +87,7 @@ const Form = () => {
         
                         
                         {inputData.validation_rule.validate && error[inputData.name]?<div><br/><label className='error'>{inputData.error_msg}</label></div>:''}
+                        
                         <br/>
                         
                         
